@@ -1,3 +1,43 @@
+/*********   1   **********/
+
+// function str(str1, str2, n){
+//     var newStr = [];
+//     if(n === undefined){
+//         newStr = str2 + str1;
+//     }
+//     for(var i = 0; i <str1.length;i++){
+//         if(i === n){
+//             newStr = newStr + str2;    
+//         }
+//         newStr = newStr + str1[i];
+        
+//     }
+//     return newStr;
+// }
+
+// var res = str("Nikola studira", "Bit", 7);
+// console.log(res);
+
+
+
+/*********   2   **********/
+
+// function joinElIntoString(arr) {
+//     var newStr = "";
+//     for (var i = 0; i < arr.length; i++) {
+//         if (typeof arr[i] !== 'undefined' && isFinite(arr[i]) && arr[i] !== null) {
+//             newStr = newStr + arr[i] + ",";
+//         }
+//     }
+//     return newStr;
+// }
+// var result = joinElIntoString([NaN, 0, 15, false, -22, '', undefined, 47, null]);
+// console.log(result);
+
+
+
+
+
 /********** 3    ***********/
 
 
