@@ -111,3 +111,71 @@
 // count = count * 12.5;
 // console.log(count)
 
+
+/****   7   ****/
+
+// var array = ["M", "Anne", 12, "Steve", "Joe", "John", "David", "Mark", true, "A"];
+
+// var firstTwo = function (arr) {
+//     var newStr = "";
+//     for (var i = 0; i < arr.length; i++) {
+//         if (typeof arr[i] === "string" && arr[i].length > 1) {
+//             newStr += arr[i][0];
+//             newStr += arr[i][1]
+//         }
+
+//     }
+//     return newStr;
+// }
+// console.log(firstTwo(array));
+
+/****   8    ****/
+
+// var reverseString = function(str) {
+//     var newStr = "";
+//     for (var i = str.length - 1; i >= 0; i--) {
+//         newStr += str[i];
+//     }
+//     return newStr;
+// };
+// console.log(reverseString("Belgrade Institute for Technology"));
+
+/****    9   ****/
+
+// var combinations = function() {
+//     for (var i = 1; i <= 7; i++) {
+//         for (var j = 7; j >= 1; j--) {
+//             if (i === j) {
+//                 continue;
+//             } else {
+//                 console.log(i, j);
+//             }
+//         }
+//     }
+// };
+// combinations();
+
+/****   10   ****/
+
+// var isPrime = function(numb) {
+//     for (var i = 2; i < numb; i++) {
+//         if (numb % i === 0) {
+//             return false;
+//         }
+//     }
+//     return true;
+// };
+// console.log(isPrime(5));
+
+/****   11   ****/
+
+// var isPalindrome = function(str) {
+//     for (var i = 0; i < str.length; i++) {
+//         if (str[i] !== str[str.length - 1 - i]) {
+//             return false;
+//         }
+//     }
+//     return true;
+// };
+// console.log(isPalindrome("anavolimilovana"));
+
