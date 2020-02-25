@@ -52,3 +52,31 @@
 // console.log(newProject.isFinish());
 // console.log(newProject.description);
 
+
+/****   4    ****/
+// var culinaryRecipe = function (ime, vrsta, slozenost, sastojci, vreme, uputstvo){
+//     return {
+//         ime: ime,
+//         vrsta: vrsta,
+//         slozenost: slozenost,
+//         sastojci : sastojci,
+//         vreme: vreme,
+//         uputstvo: uputstvo,
+//         sviSastojci: function (){
+//             console.log(this.sastojci);
+//         },
+//         priprema15min: function(){
+//            if(vreme <= 15){
+//                return true;
+//            }
+//                return false;
+//         },
+        
+// }
+// }
+
+
+// var newRecipe = culinaryRecipe("pasulj", "srpska", 3, ["pasulj", "crni luk", "so", "paprika","slanina", "persun"], 60, "kuvati duze");
+
+// console.log(newRecipe.sviSastojci());
+// console.log(newRecipe.priprema15min());
