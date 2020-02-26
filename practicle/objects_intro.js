@@ -54,29 +54,76 @@
 
 
 /****   4    ****/
-// var culinaryRecipe = function (ime, vrsta, slozenost, sastojci, vreme, uputstvo){
+
+// var culinaryRecipe = function (ime, vrsta, slozenost, sastojci, vreme, uputstvo) {
 //     return {
 //         ime: ime,
 //         vrsta: vrsta,
 //         slozenost: slozenost,
-//         sastojci : sastojci,
+//         sastojci: sastojci,
 //         vreme: vreme,
 //         uputstvo: uputstvo,
-//         sviSastojci: function (){
-//             console.log(this.sastojci);
+//         sviSastojci: function () {
+//             return this.sastojci;
 //         },
-//         priprema15min: function(){
-//            if(vreme <= 15){
-//                return true;
-//            }
-//                return false;
+//         priprema15min: function () {
+//             if (this.vreme <= 15) {
+//                 return "Moze da se spremi za 15 min";
+//             }
+//             else {
+//                 return "Ne moze da se spremi za 15 min";
+//             }
 //         },
-        
+//         novaKuhinja: function (vrsta1) {
+//             return this.vrsta = vrsta1;
+//         },
+//         brisanjeSastojka: function (sas) {
+//             var noviSastojci = [];
+//             for (var i = 0; i < this.sastojci.length; i++) {
+//                 if (sastojci[i] !== sas) {
+//                     noviSastojci[noviSastojci.length] = sastojci[i];
+//                 }
+//             }
+//             return noviSastojci;
+//         },
+//     }
 // }
-// }
-
-
-// var newRecipe = culinaryRecipe("pasulj", "srpska", 3, ["pasulj", "crni luk", "so", "paprika","slanina", "persun"], 60, "kuvati duze");
-
+// var newRecipe = culinaryRecipe("pasulj", "srpska", 3, ["pasulj", "crni luk", "so", "paprika", "slanina", "persun"], 60, "kuvati duze");
 // console.log(newRecipe.sviSastojci());
 // console.log(newRecipe.priprema15min());
+// console.log(newRecipe.novaKuhinja("italija"));
+// console.log(newRecipe.brisanjeSastojka("so"));
+
+
+/*******   3 drugi nacin konstruktorska f-ja   *****/
+
+// function createProjectObject(description, progLang, gitRep, status) {
+//     this.description = description;
+//     this.progLang = progLang;
+//     this.gitRep = gitRep;
+//     this.status = status;
+//     this.getRepository = function () {
+//         return this.gitRep;
+//     },
+//         this.isJS = function () {
+//             if (progLang === "JavaScript") {
+//                 return true;
+//             }
+//             return false;
+//         },
+//         this.isFinish = function () {
+//             if (status) {
+//                 return "Finished";
+//             }
+//             return "It is in development";
+//         }
+
+// }
+
+// var newProject = new createProjectObject("2020 Web Project", "JavaScript", "bit-web", false);
+
+
+// console.log(newProject);
+// console.log(newProject.getRepository());
+// console.log(newProject.isJS());
+// console.log(newProject.isFinish());
