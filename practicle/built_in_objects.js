@@ -66,23 +66,23 @@
 //     for (var i = 0; i < arr.length; i++) {
 //         if (arr[i] < min) {
 //             min = arr[i];
-//             index = i;
 //         }
 //     }
-//     return [min, index];
+//     var obj = { minValue: min, lastMinIndex: arr.lastIndexOf(min) }
+//     return obj;
 // }
 
-// var res = new smallest([1, 4, -2, 11, 8, 1, -2, 3]);
+// var res = smallest([1, 4, -2, 11, 8, 1, -2, 3]);
 // console.log(res);
 
 
 /////////// 5.a ////////////
 
 
-// function small(arr, a){
+// function small(arr, a) {
 //     var arr1 = [];
-//     for(var i = 0; i<arr.length;i++){
-//         if(arr[i] < a){
+//     for (var i = 0; i < arr.length; i++) {
+//         if (arr[i] < a) {
 //             arr1[arr1.length] = arr[i];
 //         }
 //     }
@@ -96,15 +96,16 @@
 ////////// 5.b /////////
 
 
-// var pro =  function (arr, b){
-//    for(var i = 0; i<arr.length;i++){
-//        var arr1 = [];
-//        arr[i].toUpperCase();
-//        if(arr[i].slice(1, 3) === b){
-//             arr1[arr.length] = arr[i];
-//        }
-//    }
-//    return arr1
+// var pro = function (arr, b) {
+//     var arr1 = [];
+
+//     for (var i = 0; i < arr.length; i++) {
+//         arr[i].toLowerCase().slice(0, 3);
+//         if (arr[i].toLowerCase().slice(0, 3) === b) {
+//             arr1[arr1.length] = arr[i];
+//         }
+//     }
+//     return arr1;
 
 // }
 // var res = pro(["JavaScript", "Programming", "fun", "product"], "pro");
@@ -169,7 +170,7 @@
 //             max = arr[i].price;
 //             index = i;
 //         }
-        
+
 //     }
 //     return arr[index].name.toUpperCase();
 // }
@@ -184,7 +185,7 @@
 //        return true;
 //    }
 //    return false;
-    
+
 // }
 
 // var result = str("niKoLa");
@@ -193,3 +194,14 @@
 //////// b ///////////
 
 
+//b
+
+// var hasDigits = function (str) {
+//     for (var i = 0; i < str.length; i++) {
+//         if (!isNaN(parseFloat(str[i]))) {
+//             return true;
+//         }
+//     }
+//     return false;
+// }
+// console.log(hasDigits("doktorihirurgija"))
