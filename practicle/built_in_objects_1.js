@@ -192,4 +192,12 @@
 
 //////// b ///////////
 
-
+// var hasDigits = function (str) {
+//     for (var i = 0; i < str.length; i++) {
+//         if (!isNaN(parseFloat(str[i]))) {
+//             return true;
+//         }
+//     }
+//     return false;
+// }
+// console.log(hasDigits("doktorihirurgija"))
