@@ -169,7 +169,7 @@
 //             max = arr[i].price;
 //             index = i;
 //         }
-        
+
 //     }
 //     return arr[index].name.toUpperCase();
 // }
@@ -184,7 +184,7 @@
 //        return true;
 //    }
 //    return false;
-    
+
 // }
 
 // var result = str("niKoLa");
@@ -201,3 +201,24 @@
 //     return false;
 // }
 // console.log(hasDigits("doktorihirurgija"))
+
+/////// c ////////
+
+// function is_hexadecimal(str){
+
+//  var a = /^[0-9a-fA-F]+$/;
+
+//         if (a.test(str))
+//           {
+//             return true;
+//           }
+//         else
+//           {
+//             return false;
+//           }
+// }
+
+// console.log(is_hexadecimal("ffffff"));
+
+///// d //////
+
