@@ -25,6 +25,15 @@ function Program(date) {
     }
     this.getData = function () {
         var str = "";
+        var allLength = 0;
+        for(var i = 0; i < this.listOfMovies.length; i++){
+            str += this.listOfMovies[i].getData();
+        }
+        for(var j = 0; j<this.totalNumbOfMovies.length;i++){
+            singleLength += this.totalNumbOfMovies[i].getData();
+            allLength++;
+        }
+       
     }
 }
 
@@ -39,5 +48,9 @@ function Festival(name) {
 
 var horror = new Genre("Horror");
 
-var movie = new Movie("Sparta", horror, 115);
-console.log(movie.getData());
+var movie1 = new Movie("Sparta", horror, 115);
+
+var program = new Program("25.10.2020");
+program.addMovie(movie1);
+console.log(program.getData());
+
