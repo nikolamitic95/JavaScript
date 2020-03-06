@@ -19,21 +19,19 @@ function Movie(title, genre, length) {
 function Program(date) {
     this.date = date;
     this.listOfMovies = [];
-    this.totalNumbOfMovies = [];
+    this.totalNumbOfMovies;
     this.addMovie = function (movie) {
         this.listOfMovies.push(movie);
+        this.totalNumbOfMovies = this.listOfMovies.length;
     }
     this.getData = function () {
-        var str = "";
-        var allLength = 0;
-        for(var i = 0; i < this.listOfMovies.length; i++){
-            str += this.listOfMovies[i].getData();
+        var str = "\t";
+        var lengthOfAllMovies = 0;
+        for (var i = 0; i < this.listOfMovies.length; i++) {
+            str += this.listOfMovies[i].getData() + "\n\t";
+            lengthOfAllMovies += this.listOfMovies[i].length;
         }
-        for(var j = 0; j<this.totalNumbOfMovies.length;i++){
-            singleLength += this.totalNumbOfMovies[i].getData();
-            allLength++;
-        }
-       
+        return this.date + ", program duration " + lengthOfAllMovies + "min\n" + str + "\n";
     }
 }
 
@@ -42,15 +40,42 @@ function Festival(name) {
     this.listOfPrograms = [];
     this.numberOfMovies = 0;
     this.addProgram = function (program) {
-        this.listOfMovies.push(program);
+        this.listOfPrograms.push(program);
+
+    }
+    this.getData = function () {
+        var str = '';
+        for (var i = 0; i < this.listOfPrograms.length; i++) {
+            this.numberOfMovies += this.listOfPrograms[i].totalNumbOfMovies;
+            str += this.listOfPrograms[i].getData();
+        }
+        return this.name + " has " + this.numberOfMovies + " movie titles\n" + str;
     }
 }
 
-var horror = new Genre("Horror");
+function createMovie(title, genre, length) {
+    var gnr = new Genre(genre);
+    return new Movie(title, gnr, length);
+}
 
-var movie1 = new Movie("Sparta", horror, 115);
+function createProgram(date) {
+    return new Program(date);
+}
 
-var program = new Program("25.10.2020");
-program.addMovie(movie1);
-console.log(program.getData());
+var firstMovie = createMovie("Sparta", "action", 115);
+var secondMovie = createMovie("Taxi driver", "drama", 120);
+var thirdMovie = createMovie("Birds", "horror", 124);
 
+
+var firstProgram = createProgram("06/03/20");
+var secondProgram = createProgram("26/06/20");
+
+firstProgram.addMovie(firstMovie);
+firstProgram.addMovie(secondMovie);
+secondProgram.addMovie(thirdMovie);
+
+var filmFest = new Festival("FilmFest20");
+filmFest.addProgram(firstProgram);
+filmFest.addProgram(secondProgram);
+
+console.log(filmFest.getData());
