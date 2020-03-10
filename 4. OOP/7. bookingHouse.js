@@ -50,14 +50,47 @@ Person.prototype.getData = function () {
     var year = this.dateOfBird.getFullYear();
     return this.name + " " + this.surname + ", " + day + "." + month + "." + year + ".";
 }
+Person.prototype.getYearsOld = function(){
+    var year = this.dateOfBird.getFullYear();
+    var year1 = new Date().getFullYear();
+    return year1 - year + " years";
+}
 
 Address.prototype.getData = function () {
-    return this.street + this.number + ", " + this.postalCode + this.city + ", "
+    return this.street +" " + this.number + ", " + this.postalCode +" " + this.city + ", " + (this.country.name.slice(0,2)).toUpperCase();
+}
+Player.prototype.getData = function(){
+    return (this.country.name.slice(0,2)).toUpperCase() + ", " + this.betAmount + " eur, " + this.person.name + " " + this.person.surname + ", " + this.person.getYearsOld();
+}
+
+BettingPlace.prototype.getData = function() {
+    return this.address.street + ", " + this.address.postalCode + " " + this.address.street + ", sum of all bets:" + this.numberOfPlayers;
 }
 
 
+var createPlayer = function( name, surname, dateOfBird, countryName, odds, continent, bet){
+    var per = new Person(name, surname, dateOfBird);
+    var coun = new Country(countryName, odds, continent);
+    return new Player(per, bet, coun);
+}
+
+var createBettingPlace = function (country, city, postalCode, street, number) {
+    var add = new Address(country, city, postalCode, street, number);
+    return new BettingPlace(add);
+  }
+
+
 var personOne = new Person("nenad", "dimitrijevic", "1/23/89")
-console.log(personOne.getData());
+
+var countryOne = new Country("Srbija", 2, CONTINENT);
+
+var addresOne = new Address(countryOne, "Beograd", 11000, "Nemanjina", 4)
+
+var playerOne = new Player(personOne, 1050, countryOne);
+
+var bettingPlaceOne = new BettingPlace(addresOne);
+
+console.log(playerOne.getData());
 
 
 
