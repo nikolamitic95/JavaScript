@@ -10,108 +10,102 @@ const CONTINENT = Object.freeze({
 
 });
 
-
-function Country(name, odds, continent) {
-    this.name = name;
-    this.odds = odds;
-    this.continent = continent;
+class Country {
+    constructor(name, odds, continent) {
+        this.name = name;
+        this.odds = odds;
+        this.continent = continent;
+    }
 }
 
-function Person(name, surname, dateOfBird) {
-    this.name = name;
-    this.surname = surname;
-    this.dateOfBird = new Date(dateOfBird);
+class Person {
+    constructor(name, surname, dateOfBird) {
+        this.name = name;
+        this.surname = surname;
+        this.dateOfBird = new Date(dateOfBird);
+    }
+    getData() {
+        let day = this.dateOfBird.getDate();
+        let month = this.dateOfBird.getMonth() + 1;
+        let year = this.dateOfBird.getFullYear();
+        return (`${this.name} ${this.surname}, ${day}.${month}.${year}.`);
+    }
+    getYearsOld() {
+        let year = this.dateOfBird.getFullYear();
+        let today = new Date().getFullYear();
+        return (`${today - year} years`);
+    }
 }
 
+class Player {
+    constructor(person, betAmount, country) {
+        this.person = person;
+        this.betAmount = betAmount;
+        this.country = country;
+    }
+    getData() {
+        return `            ${this.country.name.slice(0, 2).toUpperCase()} ${this.betAmount} eur, ${this.person.name} ${this.person.surname}, ${this.person.getYearsOld()}`
 
-Person.prototype.getData = function () {
-    let day = this.dateOfBird.getDate();
-    let month = this.dateOfBird.getMonth() + 1;
-    let year = this.dateOfBird.getFullYear();
-    return (`${this.name} ${this.surname}, ${day}.${month}.${year}.`);
+    }
 }
-Person.prototype.getYearsOld = function () {
-    let year = this.dateOfBird.getFullYear();
-    let today = new Date().getFullYear();
-    return (`${today - year} years`);
+class Address {
+    constructor(country, city, postalCode, street, number) {
+        this.country = country;
+        this.city = city;
+        this.postalCode = postalCode;
+        this.street = street;
+        this.number = number;
+    }
+    getData() {
+        return `${this.street} ${this.number}, ${this.postalCode} ${this.city}, ${this.country.name.slice(0, 2).toUpperCase()}`
+    }
 
+    getFinalData() {
+        return `      ${this.street}, ${this.postalCode} ${this.city}`
+    }
 }
-
-
-function Player(person, betAmount, country) {
-    this.person = person;
-    this.betAmount = betAmount;
-    this.country = country;
+class BettingPlace {
+    constructor(address) {
+        this.address = address;
+        this.listOfPlayers = [];
+        this.numberOfPlayers = 0;
+        this.betSum = 0;
+    }
+    addPlayers(player) {
+        this.listOfPlayers.push(player);
+        this.numberOfPlayers++;
+        this.betSum += player.betAmount;
+    }
+    getData() {
+        let playerData = "";
+        this.listOfPlayers.forEach(element => { playerData += element.getData() + "\n" })
+        return playerData;
+    }
 }
+class BettingHouse {
+    constructor(competition) {
+        this.competition = competition;
+        this.listOfBettingPlace = [];
+        this.numberOfPlayers = 0;
+    }
 
 
-Player.prototype.getData = function () {
-    return `            ${this.country.name.slice(0, 2).toUpperCase()} ${this.betAmount} eur, ${this.person.name} ${this.person.surname}, ${this.person.getYearsOld()}`
+    addBettingPlace(place) {
+        this.listOfBettingPlace.push(place);
+        this.numberOfPlayers += place.numberOfPlayers;
+    }
+    getData() {
+        let bettingHouseData = `${this.competition}, ${this.listOfBettingPlace.length} betting places, ${this.numberOfPlayers} bets`;
+        let addressAndPlayersData = "";
+        this.listOfBettingPlace.forEach(function (player) {
+            let addressData = `\n${player.address.getFinalData()}, sum of all bets: ${player.betSum}eur`;
+            let playersData = `\n${player.getData()}`;
 
+            addressAndPlayersData += (addressData + playersData);
+        })
+        return `${bettingHouseData}\t${addressAndPlayersData}`;
+    }
 }
-
-
-function Address(country, city, postalCode, street, number) {
-    this.country = country;
-    this.city = city;
-    this.postalCode = postalCode;
-    this.street = street;
-    this.number = number;
-}
-
-
-Address.prototype.getData = function () {
-    return `${this.street} ${this.number}, ${this.postalCode} ${this.city}, ${this.country.name.slice(0, 2).toUpperCase()}`
-}
-
-Address.prototype.getFinalData = function () {
-    return `      ${this.street}, ${this.postalCode} ${this.city}`
-}
-
-
-function BettingPlace(address) {
-    this.address = address;
-    this.listOfPlayers = [];
-    this.numberOfPlayers = 0;
-    this.betSum = 0;
-}
-
-
-BettingPlace.prototype.addPlayers = function (player) {
-    this.listOfPlayers.push(player);
-    this.numberOfPlayers++;
-    this.betSum += player.betAmount;
-}
-BettingPlace.prototype.getData = function () {
-    let playerData = "";
-    this.listOfPlayers.forEach(element => { playerData += element.getData() + "\n" })
-    return playerData;
-}
-
-
-function BettingHouse(competition) {
-    this.competition = competition;
-    this.listOfBettingPlace = [];
-    this.numberOfPlayers = 0;
-}
-
-
-BettingHouse.prototype.addBettingPlace = function (place) {
-    this.listOfBettingPlace.push(place);
-    this.numberOfPlayers += place.numberOfPlayers;
-}
-BettingHouse.prototype.getData = function () {
-    let bettingHouseData = `${this.competition}, ${this.listOfBettingPlace.length} betting places, ${this.numberOfPlayers} bets`;
-    let addressAndPlayersData = "";
-    this.listOfBettingPlace.forEach(function (player) {
-        let addressData = `\n${player.address.getFinalData()}, sum of all bets: ${player.betSum}eur`;
-        let playersData = `\n${player.getData()}`;
-
-        addressAndPlayersData += (addressData + playersData);
-    })
-    return `${bettingHouseData}\t${addressAndPlayersData}`;
-}
-
 
 
 let createPlayer = function (name, surname, dateOfBird, countryName, odds, continent, bet) {
@@ -152,8 +146,8 @@ bettingHouseOne.addBettingPlace(bettingPlaceTwo);
 
 
 
-// console.log(bettingHouseOne.getData());
-console.log(bettingPlaceOne.getData());
+console.log(bettingHouseOne.getData());
+
 
 
 
