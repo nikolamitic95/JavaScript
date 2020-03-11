@@ -152,7 +152,8 @@ bettingHouseOne.addBettingPlace(bettingPlaceTwo);
 
 
 
-console.log(bettingHouseOne.getData());
-// console.log(bettingPlaceOne.getData());
+// console.log(bettingHouseOne.getData());
+console.log(bettingPlaceOne.getData());
+
 
 
